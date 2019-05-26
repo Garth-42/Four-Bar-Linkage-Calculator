@@ -7,12 +7,17 @@ The functionality of the code is to take the length parameters of a 4-bar linkag
 The code takes in the lengths of the linkages and outputs pictures and gifs of the crossed and open configurations of the linkage.
 
 TODO:
-Make inputs more clear in the code
-Dataframe outputs to an excel file
+
+Make inputs more clear in code
+
+Make so dataframe outputs to an excel file if option configured
+
 Try storing pictures in computer RAM for making gifs instead of saving to disk
-General refactoring
+
 Unit tests
-Write a proper README and make easier to understand to non-technical audience
-Velocity and Acceleration and Force analysis
-What are coding best practices for a repo like this?
-If code quality and functionality increases, make into a library?
+
+Refactor for clarity
+
+Velocity, Acceleration and Force analysis
+
+Look up repo best practices
