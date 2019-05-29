@@ -3,6 +3,15 @@
 Created on Sat Feb 23 23:01:38 2019
 
 @author: garth
+
+Code Overview:
+This program takes a four-bar linkage as input and outputs a gif of the crossed and open configurations of the linkage.
+
+TODO:
+Add warning for an impossible link so an impossible link isn't attempted to be calculated in the simulation function
+Refactor to be more idiomatic
+Refactor to be used as a library
+Add a README explaining convention/etc.
 """
 
 import numpy as np
@@ -80,7 +89,6 @@ def makePictures(df, d, openOrCrossed):
     
     i = 1000
     fig = plt.figure()
-
     if openOrCrossed == 'open':
         minValuesX = [0, df['a_x'].min(),df['b_x_Open'].min(), d]
         minValuesY = [0, df['a_y'].min(),df['b_y_Open'].min()]
@@ -97,6 +105,7 @@ def makePictures(df, d, openOrCrossed):
             plotLinkage( getattr(row, 'a_x'), getattr(row,'a_y'), getattr(row, 'b_x_Open'), getattr(row, 'b_y_Open'), link_d = d, openOrCross = 'open')
             ax.set_xlim([minValueX,maxValueX]);
             ax.set_ylim([minValueY, maxValueY]);
+            ax.axis('equal')
             plt.savefig('fourbar_pics_open/'+'open' + str(i) + '.png')
             i = i + 1
             
@@ -115,6 +124,7 @@ def makePictures(df, d, openOrCrossed):
             plotLinkage( getattr(row, 'a_x'), getattr(row,'a_y'), getattr(row, 'b_x_Crossed'), getattr(row, 'b_y_Crossed'), link_d = d, openOrCross = 'cross')
             ax.set_xlim([minValueX,maxValueX]);
             ax.set_ylim([minValueY, maxValueY]);
+            ax.axis('equal')
             plt.savefig('fourbar_pics_crossed/'+'crossed' + str(i) + '.png')
             i = i + 1
 
@@ -139,10 +149,14 @@ def makeGif(openOrCrossed):
         writer.close()
 
 def main():
+    
+    # Inputs
+    # These are the length values of links A, B, C, and D respectively.
     a=40
     b=120
     c=80
-    d=100   
+    d=100
+    
     df = positionSimulation(a,b,c,d)
     makePictures(df, d, 'open')
     makeGif("open")
