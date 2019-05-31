@@ -105,7 +105,7 @@ def makePictures(df, d, openOrCrossed):
             plotLinkage( getattr(row, 'a_x'), getattr(row,'a_y'), getattr(row, 'b_x_Open'), getattr(row, 'b_y_Open'), link_d = d, openOrCross = 'open')
             ax.set_xlim([minValueX,maxValueX]);
             ax.set_ylim([minValueY, maxValueY]);
-            ax.axis('equal')
+            #ax.axis('equal') changes scale every time graph is created
             plt.savefig('fourbar_pics_open/'+'open' + str(i) + '.png')
             i = i + 1
             
@@ -124,7 +124,7 @@ def makePictures(df, d, openOrCrossed):
             plotLinkage( getattr(row, 'a_x'), getattr(row,'a_y'), getattr(row, 'b_x_Crossed'), getattr(row, 'b_y_Crossed'), link_d = d, openOrCross = 'cross')
             ax.set_xlim([minValueX,maxValueX]);
             ax.set_ylim([minValueY, maxValueY]);
-            ax.axis('equal')
+            #ax.axis('equal')
             plt.savefig('fourbar_pics_crossed/'+'crossed' + str(i) + '.png')
             i = i + 1
 
