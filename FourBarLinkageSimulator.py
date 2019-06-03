@@ -103,9 +103,9 @@ def makePictures(df, d, openOrCrossed):
             plt.clf()
             ax = fig.add_subplot(1,1,1)
             plotLinkage( getattr(row, 'a_x'), getattr(row,'a_y'), getattr(row, 'b_x_Open'), getattr(row, 'b_y_Open'), link_d = d, openOrCross = 'open')
+            ax.axis('scaled')
             ax.set_xlim([minValueX,maxValueX]);
             ax.set_ylim([minValueY, maxValueY]);
-            #ax.axis('equal') changes scale every time graph is created
             plt.savefig('fourbar_pics_open/'+'open' + str(i) + '.png')
             i = i + 1
             
@@ -122,9 +122,9 @@ def makePictures(df, d, openOrCrossed):
             plt.clf()
             ax = fig.add_subplot(1,1,1)
             plotLinkage( getattr(row, 'a_x'), getattr(row,'a_y'), getattr(row, 'b_x_Crossed'), getattr(row, 'b_y_Crossed'), link_d = d, openOrCross = 'cross')
+            ax.axis('scaled')
             ax.set_xlim([minValueX,maxValueX]);
             ax.set_ylim([minValueY, maxValueY]);
-            #ax.axis('equal')
             plt.savefig('fourbar_pics_crossed/'+'crossed' + str(i) + '.png')
             i = i + 1
 
@@ -152,7 +152,7 @@ def main():
     
     # Inputs
     # These are the length values of links A, B, C, and D respectively.
-    a=40
+    a=60
     b=120
     c=80
     d=100
